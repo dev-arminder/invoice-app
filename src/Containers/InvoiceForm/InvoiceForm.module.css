@@ -10,7 +10,7 @@
   height: 100%;
   width: calc(100vw - 72px);
   position: absolute;
-    background: rgb(0 0 0 / 65%);
+  background: rgb(0 0 0 / 65%);
 }
 .InvoiceForm__inner {
   width: 50%;
@@ -22,6 +22,32 @@
   padding-left: 2em;
   position: absolute;
 }
+
+/* 
+
+Experiment
+*/
+
+.InvoiceForm__inner::-webkit-scrollbar {
+  width: 20px;
+}
+
+/* Track */
+.InvoiceForm__inner::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 10px;
+}
+
+.InvoiceForm__inner::-webkit-scrollbar-thumb {
+  background: red;
+  border-radius: 10px;
+}
+
+/* 
+
+Experiment
+*/
+
 @media screen and (max-width: 600px) {
   .InvoiceForm {
     width: 100%;

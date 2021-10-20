@@ -5,7 +5,17 @@ function Input(props) {
   let ele;
   switch (props.type) {
     case "text":
-      ele = <input type="text" id={props.id} className={classes.input_field} />;
+      ele = (
+        <input
+          type="text"
+          id={props.id}
+          className={`${
+            props.className
+              ? props.className + " " + classes.input_field
+              : classes.input_field
+          }`}
+        />
+      );
       break;
     case "email":
       ele = (

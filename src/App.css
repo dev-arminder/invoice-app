@@ -143,6 +143,19 @@ a {
   margin-right: 0.4em;
   color: var(--text-color);
 }
+
+/* BillFrom Style */
+.BillFrom__input {
+  font-size: 0.9rem !important;
+  letter-spacing: 0.5px;
+  padding: 0.8em !important;
+
+  border: 1px solid var(--input-shadow) !important;
+}
+.BillFrom__input--fullWidth {
+  width: 95%;
+}
+
 @media screen and (max-width: 600px) {
   .Main {
     display: block;

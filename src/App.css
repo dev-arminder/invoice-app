@@ -42,6 +42,7 @@ a {
   --input-background: #ffffff;
   --input-shadow: var(--blue-grey);
   --subHeading-color: #bebec0;
+  --label-color: var(--blue-light);
   display: flex;
   position: relative;
 }
@@ -54,6 +55,7 @@ a {
   --input-background: var(--dark-blue);
   --input-shadow: rgba(0, 0, 0, 0.5);
   --subHeading-color: var(--blue-grey);
+  --label-color: var(--blue-grey);
 }
 .max-width {
   max-width: 1000px;

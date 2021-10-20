@@ -1,0 +1,40 @@
+.Navbar {
+  background: rgb(30, 33, 57);
+  background: linear-gradient(
+    180deg,
+    rgba(30, 33, 57, 0.9976365546218487) 67%,
+    #252945 100%
+  );
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom-right-radius: 1em;
+  z-index: 2;
+  position: fixed;
+  top: 0;
+  left: 0;
+  min-height: 100vh;
+}
+
+.Navbar__images {
+  text-align: center;
+}
+.Navbar__toggler {
+  cursor: pointer;
+}
+
+@media screen and (max-width: 600px) {
+  .Navbar {
+    flex-direction: row;
+    width: 100%;
+    min-height: initial;
+    border-radius: 0;
+    position: initial;
+  }
+  .Navbar > div:last-child {
+    display: flex;
+    align-items: center;
+  }
+}

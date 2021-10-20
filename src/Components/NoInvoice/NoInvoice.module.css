@@ -1,0 +1,19 @@
+.NoInvoice {
+  height: 100%;
+  text-align: center;
+  margin-top: 4rem;
+}
+.NoInvoice__heading {
+  font-size: 1.5rem;
+  padding: 0.5em;
+  color: var(--text-color);
+}
+
+.NoInvoice__para {
+  color: var(--text-color);
+  padding: 0.3em;
+  line-height: 1.6;
+}
+.NoInvoice__para strong {
+  color: var(--red);
+}

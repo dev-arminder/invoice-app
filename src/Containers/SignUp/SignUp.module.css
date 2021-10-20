@@ -1,0 +1,27 @@
+.signUp__heading {
+  font-size: 2rem;
+  color: var(--text-color);
+  padding: 0.5em;
+  font-weight: 900;
+  margin-bottom: 1em;
+}
+.signUP__formfield {
+  margin-bottom: 0.8em;
+}
+.signUP__formfield p {
+  color: var(--text-color);
+  margin: 5px 0;
+}
+.signUP__formfield a {
+  color: var(--red);
+  font-weight: bold;
+}
+.signUP__formfield a:hover {
+  color: var(--success-color);
+}
+.signUp__label {
+  display: block;
+  color: var(--text-color);
+  font-weight: 500;
+  margin-bottom: 5px;
+}

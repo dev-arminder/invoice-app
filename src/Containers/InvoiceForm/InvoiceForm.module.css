@@ -1,0 +1,36 @@
+.InvoiceForm {
+  min-height: 100vh;
+  width: calc(100vw - 72px);
+
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.InvoiceForm__background {
+  height: 100%;
+  width: calc(100vw - 72px);
+  position: absolute;
+  background: rgba(0, 0, 0, 0.4);
+}
+.InvoiceForm__inner {
+  width: 50%;
+  background: var(--primary-color);
+  color: var(--text-color);
+  max-width: 600px;
+  height: 100vh;
+  overflow: auto;
+  padding-left: 2em;
+  position: absolute;
+}
+@media screen and (max-width: 600px) {
+  .InvoiceForm {
+    width: 100%;
+  }
+  .InvoiceForm__background {
+    width: 100%;
+  }
+  .InvoiceForm__inner {
+    width: 100%;
+    padding: 0.5em;
+  }
+}

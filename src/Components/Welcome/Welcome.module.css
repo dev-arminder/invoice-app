@@ -1,0 +1,25 @@
+.Welcome {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.Welcome div {
+  margin-top: 1rem;
+}
+.Welcome__heading {
+  font-size: 2rem;
+  color: var(--text-color);
+  padding: 0.5em;
+  font-weight: 900;
+}
+.Welcome__heading span {
+  color: var(--success-color);
+}
+
+.Welcome__para {
+  font-weight: 500;
+  font-size: 1.2rem;
+  padding: 0.2em;
+  color: var(--text-color);
+}

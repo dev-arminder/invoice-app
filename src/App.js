@@ -1,23 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import "./App.css";
+import Main from "./Containers/Main/Main";
 
+// // create a context
+// const ThemeContext = createContext("none");
 function App() {
+  const [isDarkMode, setDarkMode] = useState("true");
+
+  // Change Color Mode
+  const changeColoMode = () => {
+    setDarkMode(!isDarkMode);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className={isDarkMode ? "Main dark" : "Main"}>
+      <Main isDarkMode={isDarkMode} toggleMode={changeColoMode} />
     </div>
   );
 }

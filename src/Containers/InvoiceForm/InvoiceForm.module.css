@@ -6,6 +6,9 @@
   top: 0;
   left: 0;
 }
+.InvoiceForm__heading {
+  margin: 1em 0;
+}
 .InvoiceForm__background {
   height: 100%;
   width: calc(100vw - 72px);
@@ -29,17 +32,17 @@ Experiment
 */
 
 .InvoiceForm__inner::-webkit-scrollbar {
-  width: 20px;
+  width: 10px;
 }
 
 /* Track */
 .InvoiceForm__inner::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 5px grey;
+  box-shadow: inset 0 0 2px grey;
   border-radius: 10px;
 }
 
 .InvoiceForm__inner::-webkit-scrollbar-thumb {
-  background: red;
+  background: var(--input-background);
   border-radius: 10px;
 }
 

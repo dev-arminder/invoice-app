@@ -45,6 +45,15 @@ function BillFrom() {
           <Input type="text" id="country" className="BillFrom__input" />
         </div>
       </div>
+
+      <div className={classes["Invoice__form-field"]}>
+        <Label for="projectDescription">Project Description</Label>
+        <Input
+          type="text"
+          id="projectDescription"
+          className="BillFrom__input BillFrom__input--fullWidth"
+        />
+      </div>
     </React.Fragment>
   );
 }

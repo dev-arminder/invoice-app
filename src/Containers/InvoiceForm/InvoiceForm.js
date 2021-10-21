@@ -19,7 +19,6 @@ function InvoiceForm({ onClick }) {
           <h3 className={classes.InvoiceForm__heading}>New Invoice</h3>
           <BillFrom />
           <BillTo />
-          <BillTo />
         </div>
       </div>
     </section>

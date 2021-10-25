@@ -1,0 +1,20 @@
+.InvoiceList {
+  color: wheat;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  width: 95%;
+  max-width: 1000px;
+  margin: auto;
+  padding: 1em 0;
+  cursor: pointer;
+}
+.InvoiceList__id {
+}
+.InvoiceList__date {
+}
+.InvoiceList__name {
+}
+.InvoiceList__price {
+}
+.InvoiceList__status {
+}

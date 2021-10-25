@@ -3,6 +3,7 @@ import { IoIosArrowBack } from "react-icons/io";
 import Button from "../../Components/UI/Button/Button";
 import BillFrom from "../../Components/BillFrom/BillFrom";
 import BillTo from "../../Components/BillTo/BillTo";
+import ItemList from "../../Components/ItemList/ItemList";
 import classes from "./InvoiceForm.module.css";
 
 function InvoiceForm({ onClick }) {
@@ -19,6 +20,8 @@ function InvoiceForm({ onClick }) {
           <h3 className={classes.InvoiceForm__heading}>New Invoice</h3>
           <BillFrom />
           <BillTo />
+          <ItemList />
+          <Button className="btn btn-addNew btn--invoiceForm">Add Item</Button>
         </div>
       </div>
     </section>

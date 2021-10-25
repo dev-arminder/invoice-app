@@ -4,6 +4,7 @@ import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import Button from "../../Components/UI/Button/Button";
 import NoInvoice from "../../Components/NoInvoice/NoInvoice";
 import InvoiceForm from "../InvoiceForm/InvoiceForm";
+import InvoiceList from "../../Components/InvoiceList/InvoiceList";
 
 function MainSection() {
   const [isDropDownOpen, setDropDownOpen] = useState(false);
@@ -29,7 +30,8 @@ function MainSection() {
   let newInvoiceForm = null;
   if (invoicesData) {
   } else {
-    bodyEl = <NoInvoice />;
+    // bodyEl = <NoInvoice />;
+    bodyEl = <InvoiceList />;
   }
 
   if (isOpenNewInvoiceForm) {
@@ -69,6 +71,7 @@ function MainSection() {
         </div>
       </div>
       <div className={classes.Home__body}>{bodyEl}</div>
+      <div className={classes.Home__body}>{InvoiceList}</div>
       {newInvoiceForm}
     </section>
   );

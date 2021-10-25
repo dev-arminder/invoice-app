@@ -27,6 +27,9 @@ function Input(props) {
         <input type="password" id={props.id} className={classes.input_field} />
       );
       break;
+    case "date":
+      ele = <input type="date" id={props.id} className={classes.input_field} />;
+      break;
     default:
       ele = <input type="text" id={props.id} className={classes.input_field} />;
   }

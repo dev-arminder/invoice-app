@@ -1,0 +1,34 @@
+.ItemList {
+  width: 95%;
+}
+
+.ItemList__heading {
+  margin: 2em 0;
+  font-size: 0.9rem;
+  color: var(--blue);
+}
+.ItemList__item-group {
+  display: grid;
+  grid-template-columns: repeat(14, 1fr);
+  grid-template-rows: auto;
+}
+
+/* Grid Experiment */
+
+.ItemList__item_first {
+  grid-column-start: 1;
+  grid-column-end: 6;
+}
+.ItemList__item_second {
+  grid-column-start: 6;
+  grid-column-end: 8;
+}
+
+.ItemList__item_third {
+  grid-column-start: 8;
+  grid-column-end: 10;
+}
+.ItemList__item_fourth {
+  grid-column-start: 10;
+  grid-column-end: 13;
+}

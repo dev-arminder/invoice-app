@@ -45,6 +45,30 @@ function BillFrom() {
           <Input type="text" id="country" className="BillFrom__input" />
         </div>
       </div>
+      {/*   
+     option - 1
+      <div className={classes["Invoice__form-group"]}>
+        <div className={classes["Invoice__form-field"]}>
+          <Label for="invoiceDate">Invoice Date</Label>
+          <Input type="date" id="invoiceDate" className="BillFrom__input" />
+        </div>
+
+        <div className={classes["Invoice__form-field"]}>
+          <Label for="dueDate">Due Date</Label>
+          <Input type="date" id="dueDate" className="BillFrom__input" />
+        </div>
+      </div> */}
+
+      {/* Option - 2 */}
+
+      <div className={classes["Invoice__form-field"]}>
+        <Label for="dueDate">Due Date</Label>
+        <Input
+          type="date"
+          id="dueDate"
+          className="BillFrom__input BillFrom__input--fullWidth"
+        />
+      </div>
 
       <div className={classes["Invoice__form-field"]}>
         <Label for="projectDescription">Project Description</Label>

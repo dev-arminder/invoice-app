@@ -71,7 +71,7 @@ function MainSection() {
         </div>
       </div>
       <div className={classes.Home__body}>{bodyEl}</div>
-      <div className={classes.Home__body}>{InvoiceList}</div>
+
       {newInvoiceForm}
     </section>
   );

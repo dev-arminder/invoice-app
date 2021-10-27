@@ -5,6 +5,7 @@ import MainSection from "../MainSection/MainSection";
 import Welcome from "../../Components/Welcome/Welcome";
 import SignUp from "../SignUp/SignUp";
 import Login from "../Login/Login";
+import Invoice from "../Invoice/Invoice";
 
 function Main({ isDarkMode, toggleMode }) {
   return (
@@ -23,8 +24,12 @@ function Main({ isDarkMode, toggleMode }) {
           <Login />
         </Route>
 
-        <Route path="/">
+        <Route exact path="/">
           <Welcome />
+        </Route>
+
+        <Route path="/invoice">
+          <Invoice />
         </Route>
       </Switch>
     </React.Fragment>

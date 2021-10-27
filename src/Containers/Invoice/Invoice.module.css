@@ -1,0 +1,26 @@
+.Invoice__nav {
+  background: var(--input-background);
+  padding: 1em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.Invoice__nav div:first-child {
+  display: flex;
+  align-items: center;
+}
+.Invoice__nav div:first-child p:first-child {
+  color: var(--text-color);
+}
+
+.Invoice__deskBtn {
+  display: block;
+}
+
+@media screen and (max-width: 600px) {
+  .Invoice__deskBtn {
+    display: none;
+  }
+}

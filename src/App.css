@@ -112,6 +112,23 @@ a {
   font-size: 1.1rem;
   font-weight: 700;
 }
+
+.btn__invoice {
+  margin-right: 0.5em;
+  border-radius: 1em;
+}
+.btn__invoice--edit {
+  color: var(--blue);
+  background: var(--blue-grey);
+}
+.btn__invoice--delete {
+  background: var(--red);
+  color: var(--light);
+}
+.btn__invoice--marked {
+  background: var(--blue);
+  color: var(--light);
+}
 .btn:hover {
   cursor: pointer;
   opacity: 0.8;
@@ -147,6 +164,54 @@ a {
   margin: 1.8rem 0;
 }
 
+/* Invoice Wrapper */
+.invoice-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.invoice-wrapper header {
+  width: 70%;
+}
+.invoice-wrapper header a {
+  display: inline-block;
+  margin-bottom: 1em;
+  font-size: 0.9rem;
+}
+.invoice-wrapper header a:hover,
+.invoice-wrapper header a:hover path {
+  color: var(--red);
+  stroke: var(--red);
+}
+
+/* status */
+.status {
+  padding: 1em 1.2em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 600;
+  margin-left: 1em;
+}
+
+.status svg {
+  transform: scale(3);
+  margin-right: 5px;
+}
+
+.status--paid {
+  background: #33d69f21;
+  color: var(--success-color);
+}
+.status--pending {
+  background: #ff979729;
+  color: #ff7500;
+}
+.status--draft {
+  background: #0c0e1666;
+}
 /* BillFrom Style */
 .BillFrom__input {
   font-size: 0.9rem !important;
@@ -169,5 +234,8 @@ a {
     position: initial;
     margin-left: 0;
     padding-left: 0;
+  }
+  .invoice-wrapper header {
+    width: 90%;
   }
 }

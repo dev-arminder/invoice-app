@@ -5,6 +5,8 @@
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
+  border-radius: 10px;
+  box-shadow: 1px 1px 10px var(--input-shadow);
 }
 
 .Invoice__nav div:first-child {
@@ -19,8 +21,69 @@
   display: block;
 }
 
+.Invoice__main-id {
+  grid-column-start: 2;
+}
+.Invoice__main-senderAddress {
+  grid-column-start: 9;
+  grid-column-end: 12;
+}
+.Invoice__main-invoice-meta {
+  grid-column-start: 2;
+  grid-column-end: 4;
+}
+.Invoice__main-receiverAddress {
+  grid-column-start: 5;
+  grid-column-end: 7;
+}
+
+.Invoice__main-receiverEmail {
+  grid-column-start: 8;
+  grid-column-end: 11;
+}
+
+@media screen and (max-width: 900px) {
+  .Invoice__main-receiverAddress {
+    grid-column-start: 7;
+    grid-column-end: 12;
+  }
+
+  .Invoice__main-receiverEmail {
+    grid-column-start: 2;
+    grid-column-end: 11;
+  }
+}
+
 @media screen and (max-width: 600px) {
   .Invoice__deskBtn {
     display: none;
+  }
+  .Invoice__main-senderAddress {
+    grid-column-start: 6;
+    grid-column-end: 12;
+  }
+  .Invoice__main-invoice-meta {
+    grid-column-start: 2;
+    grid-column-end: 6;
+  }
+  .Invoice__main-receiverAddress {
+    grid-column-start: 6;
+    grid-column-end: 12;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .Invoice__main-senderAddress {
+    grid-row-start: 2;
+    grid-column-start: 2;
+    grid-column-end: 12;
+  }
+  .Invoice__main-invoice-meta {
+    grid-column-start: 2;
+    grid-column-end: 7;
+  }
+  .Invoice__main-receiverAddress {
+    grid-column-start: 2;
+    grid-column-end: 12;
   }
 }

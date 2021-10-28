@@ -29,7 +29,50 @@ function Invoice() {
           </div>
         </div>
       </header>
-      <main></main>
+      <main className="max-width">
+        <div className={classes["Invoice__main-id"]}>
+          <h3 className={classes["Invoice__main-heading"]}>XM9141</h3>
+          <h4 className={classes["Invoice__main-sub"]}>Graphic Design</h4>
+        </div>
+        <div className={classes["Invoice__main-senderAddress"]}>
+          <address>
+            <ul>
+              <li>19 Unit Terrace</li>
+              <li>London</li>
+              <li>El 3EZ</li>
+              <li>United Kingdom</li>
+            </ul>
+          </address>
+        </div>
+        <div className={classes["Invoice__main-invoice-meta"]}>
+          <div>
+            <p>Invoice Date</p>
+            <p>21 Aug 2021</p>
+          </div>
+          <div>
+            <p>Payment Due</p>
+            <p>20 Sep 2021</p>
+          </div>
+        </div>
+
+        <div className={classes["Invoice__main-receiverAddress"]}>
+          <h5>Bill To</h5>
+          <h4>Alex Grim</h4>
+          <address>
+            <ul>
+              <li>84 Chruch Way</li>
+              <li>Bradford</li>
+              <li>BDI 9PB</li>
+              <li>United Kingdom</li>
+            </ul>
+          </address>
+        </div>
+
+        <div className={classes["Invoice__main-receiverEmail"]}>
+          <h5>Sent To</h5>
+          <h4>alexgrim@gmail.com</h4>
+        </div>
+      </main>
     </section>
   );
 }

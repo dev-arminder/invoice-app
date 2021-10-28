@@ -174,6 +174,7 @@ a {
 
 .invoice-wrapper header {
   width: 70%;
+  margin-bottom: 1em;
 }
 .invoice-wrapper header a {
   display: inline-block;
@@ -184,6 +185,17 @@ a {
 .invoice-wrapper header a:hover path {
   color: var(--red);
   stroke: var(--red);
+}
+
+.invoice-wrapper main {
+  display: grid;
+  grid-template-columns: repeat(11, 1fr);
+  width: 70%;
+  padding: 2em;
+  background: var(--input-background);
+  margin-top: 1em;
+  border-radius: 10px;
+  box-shadow: 1px 1px 10px var(--input-shadow);
 }
 
 /* status */
@@ -235,7 +247,8 @@ a {
     margin-left: 0;
     padding-left: 0;
   }
-  .invoice-wrapper header {
+  .invoice-wrapper header,
+  .invoice-wrapper main {
     width: 90%;
   }
 }

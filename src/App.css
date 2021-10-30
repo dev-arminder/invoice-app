@@ -43,6 +43,9 @@ a {
   --input-shadow: var(--blue-grey);
   --subHeading-color: #bebec0;
   --label-color: var(--blue-light);
+  --footer-bg: var(--blue-grey);
+  --footer-foot: var(--dark-blue);
+
   display: flex;
   position: relative;
 }
@@ -56,6 +59,8 @@ a {
   --input-shadow: rgba(0, 0, 0, 0.5);
   --subHeading-color: var(--blue-grey);
   --label-color: var(--blue-grey);
+  --footer-foot: var(--black);
+  --footer-bg: var(--dark);
 }
 .max-width {
   max-width: 1000px;
@@ -170,6 +175,7 @@ a {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding-top: 3em;
 }
 
 .invoice-wrapper header {

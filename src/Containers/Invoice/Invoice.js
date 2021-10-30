@@ -3,6 +3,8 @@ import classes from "./Invoice.module.css";
 import ArrowLeft from "../../Components/UI/ArrowLeft/ArrowLeft";
 import Status from "../../Components/UI/Status/Status";
 import Button from "../../Components/UI/Button/Button";
+import InvoiceFooter from "../../Components/InvoiceFooter/InvoiceFooter";
+
 import { Link } from "react-router-dom";
 
 function Invoice() {
@@ -72,6 +74,7 @@ function Invoice() {
           <h5>Sent To</h5>
           <h4>alexgrim@gmail.com</h4>
         </div>
+        <InvoiceFooter />
       </main>
     </section>
   );

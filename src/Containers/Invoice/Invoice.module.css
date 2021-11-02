@@ -24,6 +24,14 @@
 .Invoice__main-id {
   grid-column-start: 2;
 }
+.Invoice__main-heading::before {
+  content: "#";
+  color: var(--blue);
+}
+.Invoice__main-sub {
+  font-size: 0.8rem;
+  margin-top: 0.5em;
+}
 .Invoice__main-senderAddress {
   grid-column-start: 9;
   grid-column-end: 12;
@@ -31,6 +39,10 @@
 .Invoice__main-invoice-meta {
   grid-column-start: 2;
   grid-column-end: 4;
+}
+.Invoice__main-invoice-meta > div > p:first-child {
+  font-size: 0.8rem;
+  margin-top: 1em;
 }
 .Invoice__main-receiverAddress {
   grid-column-start: 5;
@@ -69,6 +81,7 @@
   .Invoice__main-receiverAddress {
     grid-column-start: 6;
     grid-column-end: 12;
+    margin-top: 1.5em;
   }
 }
 
@@ -77,6 +90,7 @@
     grid-row-start: 2;
     grid-column-start: 2;
     grid-column-end: 12;
+    margin: 0.5 em 0;
   }
   .Invoice__main-invoice-meta {
     grid-column-start: 2;

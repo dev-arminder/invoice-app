@@ -54,3 +54,10 @@
     display: none;
   }
 }
+
+@media screen and (max-width: 400px) {
+  .Invoice__main-footer,
+  .Invoice__footer_foot {
+    padding: 0.8em;
+  }
+}

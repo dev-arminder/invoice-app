@@ -178,6 +178,7 @@ a {
   justify-content: center;
   align-items: center;
   padding-top: 3em;
+  color: var(--text-color);
 }
 
 .invoice-wrapper header {
@@ -204,6 +205,14 @@ a {
   margin-top: 1em;
   border-radius: 10px;
   box-shadow: 1px 1px 10px var(--input-shadow);
+}
+
+.invoice-wrapper address {
+  font-size: 0.8rem;
+  font-style: normal;
+}
+.invoice-wrapper address li {
+  padding: 0.3em 0;
 }
 
 /* status */
@@ -258,5 +267,8 @@ a {
   .invoice-wrapper header,
   .invoice-wrapper main {
     width: 90%;
+  }
+  .invoice-wrapper address {
+    margin: 0.5em 0;
   }
 }

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import classes from "./Invoice.module.css";
 import ArrowLeft from "../../Components/UI/ArrowLeft/ArrowLeft";
 import Status from "../../Components/UI/Status/Status";
@@ -8,6 +8,12 @@ import InvoiceFooter from "../../Components/InvoiceFooter/InvoiceFooter";
 import { Link } from "react-router-dom";
 
 function Invoice() {
+  const [showConfirm, setShowConfirm] = useState(false);
+
+  const handleDeleteClick = () => {
+    setShowConfirm(true);
+  };
+
   return (
     <section className="primary-section invoice-wrapper">
       <header className=" max-width">
@@ -22,7 +28,10 @@ function Invoice() {
           </div>
           <div className={classes.Invoice__deskBtn}>
             <Button className="btn__invoice btn__invoice--edit">Edit</Button>
-            <Button className="btn__invoice btn__invoice--delete">
+            <Button
+              className="btn__invoice btn__invoice--delete"
+              onCLick={handleDeleteClick}
+            >
               Delete
             </Button>
             <Button className="btn__invoice btn__invoice--marked">

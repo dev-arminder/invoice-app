@@ -6,7 +6,11 @@ function Button(props) {
   // );
   // if (props.onClick) btn = <button className={"btn " + props.className} onClick={props.onClick}>{props.children}</button>
   return (
-    <button className={"btn " + props.className} onClick={props.onClick}>
+    <button
+      className={"btn " + props.className}
+      onClick={props.onClick}
+      disabled={props.disabled}
+    >
       {props.children}
     </button>
   );

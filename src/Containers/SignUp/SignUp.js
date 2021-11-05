@@ -17,10 +17,11 @@ function SignUp() {
 
   // Errors
   const [error, setError] = useState();
+  const [loading, setLoading] = useState(false);
 
-  const { signUp } = useAuth();
+  const { signUp, currentUser } = useAuth();
 
-  const handleSubmit = e => {
+  const handleSubmit = async e => {
     e.preventDefault();
     if (!userName || !userEmail || !userPassword || !userConfirmPassword) {
       setError("All Fields Are Required!!!!");
@@ -30,11 +31,21 @@ function SignUp() {
       setError("Password and Confirm Password Must be same!!!!");
       return;
     }
+
+    try {
+      setError("");
+      setLoading(true);
+      await signUp(userEmail, userPassword);
+    } catch {
+      setError("Failed to Create An Account! ");
+    }
+    setLoading(false);
   };
 
   return (
     <section className="primary-section middle-center signUp">
       <h2 className={classes.signUp__heading}>Sign Up</h2>
+
       {error ? (
         <Alert
           onClick={() => {
@@ -86,7 +97,11 @@ function SignUp() {
           />
         </div>
         <div className={classes.signUP__formfield}>
-          <Button className="btn--success btn--full" onClick={handleSubmit}>
+          <Button
+            className="btn--success btn--full"
+            onClick={handleSubmit}
+            disabled={loading}
+          >
             Sign Up
           </Button>
         </div>

@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import "./App.css";
 import Main from "./Containers/Main/Main";
 
+import { AuthProvider } from "./Context/AuthContext";
+
 // // create a context
 // const ThemeContext = createContext("none");
 function App() {
@@ -13,9 +15,11 @@ function App() {
   };
 
   return (
-    <div className={isDarkMode ? "Main dark" : "Main"}>
-      <Main isDarkMode={isDarkMode} toggleMode={changeColoMode} />
-    </div>
+    <AuthProvider>
+      <div className={isDarkMode ? "Main dark" : "Main"}>
+        <Main isDarkMode={isDarkMode} toggleMode={changeColoMode} />
+      </div>
+    </AuthProvider>
   );
 }
 

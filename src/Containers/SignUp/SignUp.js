@@ -1,10 +1,19 @@
 import React from "react";
 import Input from "../../Components/UI/Input/Input";
 import Button from "../../Components/UI/Button/Button";
+
+import { useAuth } from "../../Context/AuthContext";
+
 import classes from "./SignUp.module.css";
 import { Link } from "react-router-dom";
 
 function SignUp() {
+  const { signUp } = useAuth();
+
+  const handleSubmit = e => {
+    e.preventDefault();
+  };
+
   return (
     <section className="primary-section middle-center signUp">
       <h2 className={classes.signUp__heading}>Sign Up</h2>

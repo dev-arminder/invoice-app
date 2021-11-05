@@ -6,7 +6,7 @@ import Alert from "../../Components/UI/Alert/Alert";
 import { useAuth } from "../../Context/AuthContext";
 
 import classes from "./SignUp.module.css";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 function SignUp() {
   // Form Data
@@ -19,8 +19,8 @@ function SignUp() {
   const [error, setError] = useState();
   const [loading, setLoading] = useState(false);
 
-  const { signUp, currentUser } = useAuth();
-
+  const { signUp } = useAuth();
+  const history = useHistory();
   const handleSubmit = async e => {
     e.preventDefault();
     if (!userName || !userEmail || !userPassword || !userConfirmPassword) {
@@ -36,6 +36,7 @@ function SignUp() {
       setError("");
       setLoading(true);
       await signUp(userEmail, userPassword);
+      history.push("/home");
     } catch {
       setError("Failed to Create An Account! ");
     }

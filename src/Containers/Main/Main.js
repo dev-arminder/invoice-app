@@ -1,5 +1,6 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
+import PrivateRoute from "../../HOC/PrivateRoute";
 import Sidebar from "../../Components/Sidebar/Sidebar";
 import MainSection from "../MainSection/MainSection";
 import Welcome from "../../Components/Welcome/Welcome";
@@ -12,9 +13,11 @@ function Main({ isDarkMode, toggleMode }) {
     <React.Fragment>
       <Sidebar isDarkMode={isDarkMode} toggleMode={toggleMode} />
       <Switch>
-        <Route path="/home">
+        {/* <PrivateRoute path="/home">
           <MainSection />
-        </Route>
+        </PrivateRoute> */}
+
+        <PrivateRoute path="/home" component={MainSection} />
 
         <Route path="/signUp">
           <SignUp />

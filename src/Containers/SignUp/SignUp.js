@@ -2,6 +2,7 @@ import React, { useRef, useState } from "react";
 import Input from "../../Components/UI/Input/Input";
 import Button from "../../Components/UI/Button/Button";
 import Alert from "../../Components/UI/Alert/Alert";
+import Loader from "../../Components/UI/Loader/Loader";
 
 import { useAuth } from "../../Context/AuthContext";
 
@@ -31,6 +32,11 @@ function SignUp() {
       setError("Password and Confirm Password Must be same!!!!");
       return;
     }
+
+    let userInfo = {
+      userName,
+      userEmail
+    };
 
     try {
       setError("");
@@ -98,13 +104,17 @@ function SignUp() {
           />
         </div>
         <div className={classes.signUP__formfield}>
-          <Button
-            className="btn--success btn--full"
-            onClick={handleSubmit}
-            disabled={loading}
-          >
-            Sign Up
-          </Button>
+          {loading ? (
+            <Loader />
+          ) : (
+            <Button
+              className="btn--success btn--full"
+              onClick={handleSubmit}
+              disabled={loading}
+            >
+              Sign Up
+            </Button>
+          )}
         </div>
         <div className={classes.signUP__formfield}>
           <p>Already have an Account.</p>

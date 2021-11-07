@@ -1,0 +1,24 @@
+.Loader {
+  border: 0;
+  padding: 0.5em 0.8em;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--success-color);
+  background: var(--success-color-dark);
+  width: 100%;
+  text-align: center;
+}
+.Loader svg {
+  transform: scale(1.5);
+  stroke-width: 2px;
+  animation: loader 1s infinite;
+}
+
+@keyframes loader {
+  0% {
+    transform: rotate(0deg) scale(1.5);
+  }
+  100% {
+    transform: rotate(360deg) scale(1.5);
+  }
+}

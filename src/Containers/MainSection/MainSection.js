@@ -1,15 +1,42 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import classes from "./MainSection.module.css";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import Button from "../../Components/UI/Button/Button";
 import NoInvoice from "../../Components/NoInvoice/NoInvoice";
 import InvoiceForm from "../InvoiceForm/InvoiceForm";
 import InvoiceList from "../../Components/InvoiceList/InvoiceList";
+import axios from "axios";
+
+// Firebase db
+// import { db } from "../../firebase";
+// import { collection, addDoc } from "firebase/firestore";
+
+import { getDatabase, ref, set } from "firebase/database";
 
 function MainSection() {
   const [isDropDownOpen, setDropDownOpen] = useState(false);
   const [isOpenNewInvoiceForm, setOpenNewInvoiceForm] = useState(false);
   const [invoicesData, setInvoicesData] = useState(0);
+
+  // // Database functions
+  function writeUserData(userId, name, email, imageUrl) {
+    const db = getDatabase();
+    set(ref(db, "users/" + userId), {
+      username: name,
+      email: email,
+      profile_picture: imageUrl
+    });
+  }
+
+  // check if any invoice is there for a particular user
+  useEffect(() => {
+    writeUserData(
+      123,
+      "arminder",
+      "mail.to.arminder.singh@gmail.com",
+      "anksjs"
+    );
+  }, []);
 
   const handleDropDown = () => {
     setDropDownOpen(!isDropDownOpen);

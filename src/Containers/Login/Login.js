@@ -3,6 +3,7 @@ import Input from "../../Components/UI/Input/Input";
 import Button from "../../Components/UI/Button/Button";
 import Alert from "../../Components/UI/Alert/Alert";
 import classes from "./Login.module.css";
+import Loader from "../../Components/UI/Loader/Loader";
 
 import { useAuth } from "../../Context/AuthContext";
 
@@ -32,7 +33,7 @@ function SignUp() {
       await login(userEmail, userPassword);
       history.push("/home");
     } catch {
-      setError("Failed to login! ");
+      setError("Please Create Your Account First ");
     }
     setLoading(false);
   };
@@ -72,9 +73,13 @@ function SignUp() {
         </div>
 
         <div className={classes.login__formfield}>
-          <Button className="btn--success btn--full" onClick={handleSubmit}>
-            Log In
-          </Button>
+          {loading ? (
+            <Loader />
+          ) : (
+            <Button className="btn--success btn--full" onClick={handleSubmit}>
+              Log In
+            </Button>
+          )}
         </div>
         <div className={classes.login__formfield}>
           <p>Don't Have an Account Yet.</p>

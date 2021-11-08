@@ -5,39 +5,27 @@ import Button from "../../Components/UI/Button/Button";
 import NoInvoice from "../../Components/NoInvoice/NoInvoice";
 import InvoiceForm from "../InvoiceForm/InvoiceForm";
 import InvoiceList from "../../Components/InvoiceList/InvoiceList";
-import axios from "axios";
 
-// Firebase db
-// import { db } from "../../firebase";
-// import { collection, addDoc } from "firebase/firestore";
-
-import { getDatabase, ref, set } from "firebase/database";
+import { writeUserData, readUserData } from "../../firebaseFunctions";
+import { useAuth } from "../../Context/AuthContext";
+import { async } from "@firebase/util";
 
 function MainSection() {
   const [isDropDownOpen, setDropDownOpen] = useState(false);
   const [isOpenNewInvoiceForm, setOpenNewInvoiceForm] = useState(false);
   const [invoicesData, setInvoicesData] = useState(0);
-
-  // // Database functions
-  function writeUserData(userId, name, email, imageUrl) {
-    const db = getDatabase();
-    set(ref(db, "users/" + userId), {
-      username: name,
-      email: email,
-      profile_picture: imageUrl
-    });
-  }
+  const [databaseData, setDatabaseData] = useState(0);
+  const { currentUser } = useAuth();
 
   // check if any invoice is there for a particular user
+  const userData = {
+    userID: currentUser.multiFactor.user.uid,
+    email: currentUser.multiFactor.user.email
+  };
   useEffect(() => {
-    writeUserData(
-      123,
-      "arminder",
-      "mail.to.arminder.singh@gmail.com",
-      "anksjs"
-    );
-  }, []);
-
+    readUserData(userData.userID, setDatabaseData);
+  }, [0]);
+  // console.log(databaseData);
   const handleDropDown = () => {
     setDropDownOpen(!isDropDownOpen);
   };
@@ -64,7 +52,7 @@ function MainSection() {
   if (isOpenNewInvoiceForm) {
     newInvoiceForm = <InvoiceForm onClick={removeInvoceForm} />;
   }
-  console.log(newInvoiceForm);
+  // console.log(newInvoiceForm);
   return (
     <section className={classes.Home + " primary-section "}>
       <div className={classes.Home__header + " max-width"}>

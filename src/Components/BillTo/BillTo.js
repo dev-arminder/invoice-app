@@ -3,7 +3,16 @@ import Label from "../UI/Label/Label";
 import Input from "../UI/Input/Input";
 import classes from "./BillTo.module.css";
 
-function BillFrom() {
+function BillFrom({
+  handleName,
+  handleEmail,
+  handleAddr,
+  handleCity,
+  handlePC,
+  handleCountry,
+  handleDate,
+  handlePD
+}) {
   return (
     <React.Fragment>
       <h4 className={classes["Invoice__sub-heading"]}>Bill To</h4>
@@ -13,6 +22,9 @@ function BillFrom() {
           type="text"
           id="clientName"
           className="BillFrom__input BillFrom__input--fullWidth"
+          onChange={e => {
+            handleName(e.target.value);
+          }}
         />
       </div>
       <div className={classes["Invoice__form-field"]}>
@@ -21,6 +33,9 @@ function BillFrom() {
           type="text"
           id="clientEmail"
           className="BillFrom__input BillFrom__input--fullWidth"
+          onChange={e => {
+            handleEmail(e.target.value);
+          }}
         />
       </div>
       <div className={classes["Invoice__form-field"]}>
@@ -29,20 +44,36 @@ function BillFrom() {
           type="text"
           id="streetAddress"
           className="BillFrom__input BillFrom__input--fullWidth"
+          onChange={e => handleAddr(e.target.value)}
         />
       </div>
       <div className={classes["Invoice__form-group"]}>
         <div className={classes["Invoice__form-field"]}>
           <Label for="city">City</Label>
-          <Input type="text" id="city" className="BillFrom__input" />
+          <Input
+            type="text"
+            id="city"
+            className="BillFrom__input"
+            onChange={e => handleCity(e.target.value)}
+          />
         </div>
         <div className={classes["Invoice__form-field"]}>
           <Label for="postCode">Post Code</Label>
-          <Input type="text" id="post Code" className="BillFrom__input" />
+          <Input
+            type="text"
+            id="post Code"
+            className="BillFrom__input"
+            onChange={e => handlePC(e.target.value)}
+          />
         </div>
         <div className={classes["Invoice__form-field"]}>
           <Label for="country">Country</Label>
-          <Input type="text" id="country" className="BillFrom__input" />
+          <Input
+            type="text"
+            id="country"
+            className="BillFrom__input"
+            onChange={e => handleCountry(e.target.value)}
+          />
         </div>
       </div>
       {/*   
@@ -67,6 +98,7 @@ function BillFrom() {
           type="date"
           id="dueDate"
           className="BillFrom__input BillFrom__input--fullWidth"
+          onChange={e => handleDate(e.target.value)}
         />
       </div>
 
@@ -76,6 +108,8 @@ function BillFrom() {
           type="text"
           id="projectDescription"
           className="BillFrom__input BillFrom__input--fullWidth"
+          placeholder="e.g. Graphic Design"
+          onChange={e => handlePD(e.target.value)}
         />
       </div>
     </React.Fragment>

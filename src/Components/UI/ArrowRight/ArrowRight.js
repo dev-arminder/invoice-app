@@ -11,9 +11,9 @@ function ArrowRight() {
       <path
         d="M1 1l4 4-4 4"
         stroke="#7C5DFA"
-        stroke-width="2"
+        strokeWidth="2"
         fill="none"
-        fill-rule="evenodd"
+        fillRule="evenodd"
       />
     </svg>
   );

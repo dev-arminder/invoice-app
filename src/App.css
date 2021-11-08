@@ -170,7 +170,9 @@ a {
 .btn--invoiceForm {
   margin: 1.8rem 0;
 }
-
+.btn--fullWidth {
+  width: 95%;
+}
 /* Invoice Wrapper */
 .invoice-wrapper {
   display: flex;

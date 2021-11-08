@@ -7,11 +7,11 @@ import Welcome from "../../Components/Welcome/Welcome";
 import SignUp from "../SignUp/SignUp";
 import Login from "../Login/Login";
 import Invoice from "../Invoice/Invoice";
-import { useAuth } from "../../Context/AuthContext";
+// import { useAuth } from "../../Context/AuthContext";
 
 function Main({ isDarkMode, toggleMode }) {
-  const { currentUser } = useAuth();
-  console.log(currentUser);
+  // const { currentUser } = useAuth();
+  // console.log(currentUser);
   return (
     <React.Fragment>
       <Sidebar isDarkMode={isDarkMode} toggleMode={toggleMode} />

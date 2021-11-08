@@ -56,7 +56,7 @@ function InvoiceForm({ onClick }) {
             handleDate={setBillDueDate}
             handlePD={setBillToPD}
           />
-          {ItemsEle}
+          ItemList
           <Button className="btn btn-addNew btn--invoiceForm btn--fullWidth">
             Add Item
           </Button>

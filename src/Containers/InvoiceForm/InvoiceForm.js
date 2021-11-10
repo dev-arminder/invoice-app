@@ -23,10 +23,33 @@ function InvoiceForm({ onClick }) {
   const [billDueDate, setBillDueDate] = useState("");
   const [billToPD, setBillToPD] = useState("");
 
-  const [itemListLength, setItemListLength] = useState(1);
+  //billItem
+
+  const [billItemName, setBillItemName] = useState("");
+  const [billItemQty, setBillItemQty] = useState("");
+  const [billItemPrice, setBillItemPrice] = useState("");
+  const [billItemTotal, setBillItemTotal] = useState("");
 
   function handleSubmit(e) {
     e.preventDefault();
+    let invoice = {
+      billFromStreetAddress,
+      billFromCity,
+      billFromPC,
+      billFromCountry,
+      billToName,
+      billToEmail,
+      billToAddr,
+      billToCity,
+      billToPC,
+      billToCountry,
+      billDueDate,
+      billToPD,
+      billItemName,
+      billItemQty,
+      billItemPrice,
+      billItemTotal
+    };
   }
   return (
     <section className={classes.InvoiceForm}>
@@ -56,7 +79,12 @@ function InvoiceForm({ onClick }) {
               handleDate={setBillDueDate}
               handlePD={setBillToPD}
             />
-            <ItemList />
+            <ItemList
+              handleName={setBillItemName}
+              handleQty={setBillItemQty}
+              handlePrice={setBillItemPrice}
+              handleTotal={setBillItemTotal}
+            />
 
             <div className={classes.InvoiceForm__btns}>
               <Button className="btn btn-addNew btn--invoiceForm btn--draft">

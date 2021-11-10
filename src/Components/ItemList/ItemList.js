@@ -6,7 +6,7 @@ import Item from "../UI/Item/Item";
 import classes from "./ItemList.module.css";
 import Button from "../UI/Button/Button";
 
-function ItemList() {
+function ItemList({ handleName, handleQty, handlePrice, handleTotal }) {
   return (
     <div className={classes.ItemList}>
       <h3 className={classes["ItemList__heading"]}>Item List</h3>
@@ -24,14 +24,13 @@ function ItemList() {
           <Label>Total</Label>
         </div>
         <div className={classes["ItemList__item_fifth"]}></div>
-        <Item />
+        <Item
+          handleName={handleName}
+          handleQty={handleQty}
+          handlePrice={handlePrice}
+          handleTotal={handleTotal}
+        />
       </div>
-      {/* <Button
-        className="btn btn-addNew btn--invoiceForm btn--fullWidth"
-        onClick={onClickHandler}
-      >
-        Add Item
-      </Button> */}
     </div>
   );
 }

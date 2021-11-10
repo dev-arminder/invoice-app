@@ -3,12 +3,7 @@ import Input from "../Input/Input";
 import IconDelete from "../IconDelete/IconDelete";
 import classes from "./Item.module.css";
 
-function Item() {
-  const [itemName, setItemName] = useState("");
-  const [itemQty, setItemQty] = useState("");
-  const [itemPrice, setItemPrice] = useState("");
-  const [itemTotal, setItemTotal] = useState("");
-
+function Item({ handleName, handlePrice, handleQty, handleTotal }) {
   return (
     <>
       <div className={classes["ItemList__item_first"]}>
@@ -16,8 +11,9 @@ function Item() {
           type="text"
           id="itemList"
           className="BillFrom__input BillFrom__input--fullWidth"
-          onChange={e => setItemName(e.target.value)}
+          onChange={e => handleName(e.target.value)}
           required={true}
+          placeholder="e.g. Graphic Design"
         />
       </div>
       <div className={classes["ItemList__item_second"]}>
@@ -25,8 +21,9 @@ function Item() {
           type="text"
           id="Quantity"
           className="BillFrom__input BillFrom__input--fullWidth"
-          onChange={e => setItemQty(e.target.value)}
+          onChange={e => handleQty(e.target.value)}
           required={true}
+          placeholder="e.g. 2"
         />
       </div>
       <div className={classes["ItemList__item_third"]}>
@@ -34,8 +31,9 @@ function Item() {
           type="text"
           id="Price"
           className="BillFrom__input BillFrom__input--fullWidth"
-          onChange={e => setItemPrice(e.target.value)}
+          onChange={e => handlePrice(e.target.value)}
           required={true}
+          placeholder="e.g. 200"
         />
       </div>
       <div className={classes["ItemList__item_fourth"]}>
@@ -43,8 +41,9 @@ function Item() {
           type="text"
           id="total"
           className="BillFrom__input BillFrom__input--fullWidth"
-          onChange={e => setItemTotal(e.target.value)}
+          onChange={e => handleTotal(e.target.value)}
           required={true}
+          placeholder="e.g. 400"
         />
       </div>
       {/* <div className={classes["ItemList__item_fifth"]}>

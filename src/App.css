@@ -170,7 +170,7 @@ a {
 .btn--invoiceForm {
   margin: 1.8rem 0;
 }
-.btn-draft {
+.btn--draft {
   background: var(--dark-blue);
 }
 .btn--fullWidth {

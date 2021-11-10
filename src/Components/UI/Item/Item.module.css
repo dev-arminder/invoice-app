@@ -1,0 +1,24 @@
+.ItemList__item_first {
+  grid-column-start: 1;
+  grid-column-end: 7;
+  margin-top: 10px;
+}
+.ItemList__item_second {
+  grid-column-start: 7;
+  grid-column-end: 9;
+  margin-top: 10px;
+}
+
+.ItemList__item_third {
+  grid-column-start: 9;
+  grid-column-end: 11;
+  margin-top: 10px;
+}
+.ItemList__item_fourth {
+  grid-column-start: 11;
+  grid-column-end: 14;
+  margin-top: 10px;
+}
+.ItemList__item_fifth {
+  margin-top: 10px;
+}

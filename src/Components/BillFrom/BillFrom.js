@@ -15,6 +15,7 @@ function BillFrom({ handleStreetAddr, handleCity, handlePC, handleCountry }) {
           className="BillFrom__input BillFrom__input--fullWidth"
           placeholder="e.g 19 React Road"
           onChange={e => handleStreetAddr(e.target.value)}
+          required={true}
         />
       </div>
       <div className={classes["Invoice__form-group"]}>
@@ -25,6 +26,7 @@ function BillFrom({ handleStreetAddr, handleCity, handlePC, handleCountry }) {
             id="city"
             className="BillFrom__input"
             onChange={e => handleCity(e.target.value)}
+            required={true}
           />
         </div>
         <div className={classes["Invoice__form-field"]}>
@@ -34,6 +36,7 @@ function BillFrom({ handleStreetAddr, handleCity, handlePC, handleCountry }) {
             id="post Code"
             className="BillFrom__input"
             onChange={e => handlePC(e.target.value)}
+            required={true}
           />
         </div>
         <div className={classes["Invoice__form-field"]}>
@@ -43,6 +46,7 @@ function BillFrom({ handleStreetAddr, handleCity, handlePC, handleCountry }) {
             id="country"
             className="BillFrom__input"
             onChange={e => handleCountry(e.target.value)}
+            required={true}
           />
         </div>
       </div>

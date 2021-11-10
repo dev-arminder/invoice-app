@@ -26,6 +26,17 @@
   position: absolute;
 }
 
+.InvoiceForm__btns {
+  margin-top: 10px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.InvoiceForm__btns button {
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
 /* 
 
 Experiment

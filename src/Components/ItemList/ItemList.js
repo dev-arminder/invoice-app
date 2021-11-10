@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import Label from "../UI/Label/Label";
 import Input from "../UI/Input/Input";
 import IconDelete from "../UI/IconDelete/IconDelete";
+import Item from "../UI/Item/Item";
 import classes from "./ItemList.module.css";
+import Button from "../UI/Button/Button";
 
 function ItemList() {
   return (
@@ -22,40 +24,14 @@ function ItemList() {
           <Label>Total</Label>
         </div>
         <div className={classes["ItemList__item_fifth"]}></div>
-        <div className={classes["ItemList__item_first"]}>
-          <Input
-            type="text"
-            id="itemList"
-            className="BillFrom__input BillFrom__input--fullWidth"
-          />
-        </div>
-        <div className={classes["ItemList__item_second"]}>
-          <Input
-            type="text"
-            id="Quantity"
-            className="BillFrom__input BillFrom__input--fullWidth"
-          />
-        </div>
-        <div className={classes["ItemList__item_third"]}>
-          <Input
-            type="text"
-            id="Price"
-            className="BillFrom__input BillFrom__input--fullWidth"
-          />
-        </div>
-        <div className={classes["ItemList__item_fourth"]}>
-          <Input
-            type="text"
-            id="total"
-            className="BillFrom__input BillFrom__input--fullWidth"
-          />
-        </div>
-        <div className={classes["ItemList__item_fifth"]}>
-          <IconDelete />
-        </div>
+        <Item />
       </div>
-
-      <div className={classes["ItemList__item"]}></div>
+      {/* <Button
+        className="btn btn-addNew btn--invoiceForm btn--fullWidth"
+        onClick={onClickHandler}
+      >
+        Add Item
+      </Button> */}
     </div>
   );
 }

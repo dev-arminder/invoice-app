@@ -25,6 +25,7 @@ function BillFrom({
           onChange={e => {
             handleName(e.target.value);
           }}
+          required={true}
         />
       </div>
       <div className={classes["Invoice__form-field"]}>
@@ -36,6 +37,7 @@ function BillFrom({
           onChange={e => {
             handleEmail(e.target.value);
           }}
+          required={true}
         />
       </div>
       <div className={classes["Invoice__form-field"]}>
@@ -45,6 +47,7 @@ function BillFrom({
           id="streetAddress"
           className="BillFrom__input BillFrom__input--fullWidth"
           onChange={e => handleAddr(e.target.value)}
+          required={true}
         />
       </div>
       <div className={classes["Invoice__form-group"]}>
@@ -55,6 +58,7 @@ function BillFrom({
             id="city"
             className="BillFrom__input"
             onChange={e => handleCity(e.target.value)}
+            required={true}
           />
         </div>
         <div className={classes["Invoice__form-field"]}>
@@ -64,6 +68,7 @@ function BillFrom({
             id="post Code"
             className="BillFrom__input"
             onChange={e => handlePC(e.target.value)}
+            required={true}
           />
         </div>
         <div className={classes["Invoice__form-field"]}>
@@ -73,24 +78,10 @@ function BillFrom({
             id="country"
             className="BillFrom__input"
             onChange={e => handleCountry(e.target.value)}
+            required={true}
           />
         </div>
       </div>
-      {/*   
-     option - 1
-      <div className={classes["Invoice__form-group"]}>
-        <div className={classes["Invoice__form-field"]}>
-          <Label for="invoiceDate">Invoice Date</Label>
-          <Input type="date" id="invoiceDate" className="BillFrom__input" />
-        </div>
-
-        <div className={classes["Invoice__form-field"]}>
-          <Label for="dueDate">Due Date</Label>
-          <Input type="date" id="dueDate" className="BillFrom__input" />
-        </div>
-      </div> */}
-
-      {/* Option - 2 */}
 
       <div className={classes["Invoice__form-field"]}>
         <Label for="dueDate">Due Date</Label>
@@ -99,6 +90,7 @@ function BillFrom({
           id="dueDate"
           className="BillFrom__input BillFrom__input--fullWidth"
           onChange={e => handleDate(e.target.value)}
+          required={true}
         />
       </div>
 
@@ -110,6 +102,7 @@ function BillFrom({
           className="BillFrom__input BillFrom__input--fullWidth"
           placeholder="e.g. Graphic Design"
           onChange={e => handlePD(e.target.value)}
+          required={true}
         />
       </div>
     </React.Fragment>

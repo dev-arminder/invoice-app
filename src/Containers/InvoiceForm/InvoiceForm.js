@@ -25,10 +25,9 @@ function InvoiceForm({ onClick }) {
 
   const [itemListLength, setItemListLength] = useState(1);
 
-  // let ItemsEle = [];
-  // for (let i = 0; i < itemListLength; i++) {
-  //   ItemsEle.push(<ItemList />);
-  // }
+  function handleSubmit(e) {
+    e.preventDefault();
+  }
   return (
     <section className={classes.InvoiceForm}>
       <div className={classes.InvoiceForm__background} onClick={onClick}></div>
@@ -40,26 +39,34 @@ function InvoiceForm({ onClick }) {
         </div>
         <div>
           <h3 className={classes.InvoiceForm__heading}>New Invoice</h3>
-          <BillFrom
-            handleStreetAddr={setBillFromStreetAddress}
-            handleCity={setBillFromCity}
-            handlePC={setBillFromPC}
-            handleCountry={setBillFromCountry}
-          />
-          <BillTo
-            handleName={setBillToName}
-            handleEmail={setBillToEmail}
-            handleAddr={setbillToAddr}
-            handleCity={setBillToCity}
-            handlePC={setBillToPC}
-            handleCountry={setBillToCountry}
-            handleDate={setBillDueDate}
-            handlePD={setBillToPD}
-          />
-          ItemList
-          <Button className="btn btn-addNew btn--invoiceForm btn--fullWidth">
-            Add Item
-          </Button>
+          <form onSubmit={e => handleSubmit(e)}>
+            <BillFrom
+              handleStreetAddr={setBillFromStreetAddress}
+              handleCity={setBillFromCity}
+              handlePC={setBillFromPC}
+              handleCountry={setBillFromCountry}
+            />
+            <BillTo
+              handleName={setBillToName}
+              handleEmail={setBillToEmail}
+              handleAddr={setbillToAddr}
+              handleCity={setBillToCity}
+              handlePC={setBillToPC}
+              handleCountry={setBillToCountry}
+              handleDate={setBillDueDate}
+              handlePD={setBillToPD}
+            />
+            <ItemList />
+
+            <div className={classes.InvoiceForm__btns}>
+              <Button className="btn btn-addNew btn--invoiceForm btn--draft">
+                Save as draft
+              </Button>
+              <Button className="btn btn-addNew btn--invoiceForm btn--send">
+                Save
+              </Button>
+            </div>
+          </form>
         </div>
       </div>
     </section>

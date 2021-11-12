@@ -34,7 +34,7 @@ function Main({ isDarkMode, toggleMode }) {
           <Welcome />
         </Route>
 
-        <Route path="/invoice">
+        <Route path="/invoice/:id">
           <Invoice />
         </Route>
       </Switch>

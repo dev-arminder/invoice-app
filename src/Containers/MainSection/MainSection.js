@@ -39,10 +39,14 @@ function MainSection() {
   };
 
   // Depends Upon firebase Data;
-  let bodyEl = null;
+  let bodyEl = [];
+
   let newInvoiceForm = null;
   if (invoices.length > 0) {
-    bodyEl = <InvoiceList />;
+    // bodyEl.map(el => <InvoiceList />);
+    invoices.forEach(invoice =>
+      bodyEl.push(<InvoiceList key={invoice.id} {...invoice} />)
+    );
   } else {
     bodyEl = <NoInvoice />;
   }

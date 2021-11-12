@@ -11,8 +11,6 @@ import {
 
 const db = getDatabase();
 
-// // Database functions
-
 // Read User data
 export function readUserData(id, updateState, updateInvoices) {
   const userRef = ref(db, "users/" + id);
@@ -25,7 +23,6 @@ export function readUserData(id, updateState, updateInvoices) {
       invoices.push({ ...data.invoices[key], id: key });
     }
     updateInvoices(invoices);
-    console.log(data);
   });
 }
 
@@ -46,4 +43,15 @@ export function addInvoice(id, invoiceData) {
   set(newPostRef, invoiceData);
 }
 
+export function getInvoices(userId, invoiceId) {
+  const userRef = ref(db, `users/${userId}/invoices/${invoiceId}`);
+  onValue(userRef, snapshot => {
+    const data = snapshot.val();
+    console.log(data);
+  });
+}
+
+export function deleteInvoice(userId, invoiceId) {
+  set(ref(db, `users/${userId}/invoices/${invoiceId}`), null);
+}
 // export function

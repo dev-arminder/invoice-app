@@ -1,21 +1,56 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import classes from "./Invoice.module.css";
 import ArrowLeft from "../../Components/UI/ArrowLeft/ArrowLeft";
 import Status from "../../Components/UI/Status/Status";
 import Button from "../../Components/UI/Button/Button";
 import InvoiceFooter from "../../Components/InvoiceFooter/InvoiceFooter";
-
-import { Link } from "react-router-dom";
+import Confirm from "../../Components/UI/Confirm/Confirm";
+import { useAuth } from "../../Context/AuthContext";
+import { getInvoices, deleteInvoice } from "../../firebaseFunctions";
+import { Link, useHistory } from "react-router-dom";
 
 function Invoice() {
   const [showConfirm, setShowConfirm] = useState(false);
+  const [showMarked, setShowMarked] = useState(false);
+  const [dbData, setDbData] = useState();
+  const { id } = useParams();
+  const { currentUser } = useAuth();
+
+  const history = useHistory();
+
+  useEffect(() => {
+    getInvoices(currentUser.multiFactor.user.uid, "-" + id);
+  }, []);
 
   const handleDeleteClick = () => {
-    setShowConfirm(true);
+    deleteInvoice(currentUser.multiFactor.user.uid, "-" + id);
+    history.push("/home");
+  };
+
+  const handleMarked = () => {
+    setShowMarked(true);
   };
 
   return (
     <section className="primary-section invoice-wrapper">
+      {showConfirm ? (
+        <Confirm
+          heading="Confirm Deletion"
+          bodyText={`Are you sure you want to delete invoice #${id}? This action Can not be undone.`}
+          action="delete"
+          handleCancel={() => setShowConfirm(false)}
+          handleDelete={handleDeleteClick}
+        />
+      ) : null}
+      {showMarked ? (
+        <Confirm
+          heading="Confirm Marking"
+          bodyText={`Are you sure you want to Mark invoice #${id} as Paid? This action Can not be undone.`}
+          action="marked"
+          handleCancel={() => setShowMarked(false)}
+        />
+      ) : null}
       <header className=" max-width">
         <Link to="/home">
           <ArrowLeft />
@@ -30,11 +65,14 @@ function Invoice() {
             <Button className="btn__invoice btn__invoice--edit">Edit</Button>
             <Button
               className="btn__invoice btn__invoice--delete"
-              onCLick={handleDeleteClick}
+              onClick={() => setShowConfirm(true)}
             >
               Delete
             </Button>
-            <Button className="btn__invoice btn__invoice--marked">
+            <Button
+              className="btn__invoice btn__invoice--marked"
+              onClick={() => setShowMarked(true)}
+            >
               Mark As Paid
             </Button>
           </div>

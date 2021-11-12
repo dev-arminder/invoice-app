@@ -1,11 +1,1 @@
-1. check if user Exist in user's database
-   - YES
-        - Checkout for invoices
-            - YES 
-                -  Show Invoices 
-            - NO 
-                 - Render NoInvoice Component
-
-   - NO 
-        - Save user's data into database
-              
+1. Mark as paid button when invoice is Already Paid

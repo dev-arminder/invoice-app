@@ -12,6 +12,7 @@
   border-radius: 10px;
   box-shadow: 1px 1px 10px var(--input-shadow);
   transition-duration: 0.3s;
+  margin-top: 1em;
   /* Experimental */
   text-align: center;
 }

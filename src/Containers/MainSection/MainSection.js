@@ -5,16 +5,14 @@ import Button from "../../Components/UI/Button/Button";
 import NoInvoice from "../../Components/NoInvoice/NoInvoice";
 import InvoiceForm from "../InvoiceForm/InvoiceForm";
 import InvoiceList from "../../Components/InvoiceList/InvoiceList";
-
 import { writeUserData, readUserData } from "../../firebaseFunctions";
 import { useAuth } from "../../Context/AuthContext";
-import { async } from "@firebase/util";
 
 function MainSection() {
   const [isDropDownOpen, setDropDownOpen] = useState(false);
   const [isOpenNewInvoiceForm, setOpenNewInvoiceForm] = useState(false);
-  const [invoicesData, setInvoicesData] = useState(0);
   const [databaseData, setDatabaseData] = useState(0);
+  const [invoices, setInvoices] = useState([]);
   const { currentUser } = useAuth();
 
   // check if any invoice is there for a particular user
@@ -23,9 +21,9 @@ function MainSection() {
     email: currentUser.multiFactor.user.email
   };
   useEffect(() => {
-    readUserData(userData.userID, setDatabaseData);
-  }, [0]);
-  // console.log(databaseData);
+    readUserData(userData.userID, setDatabaseData, setInvoices);
+  }, []);
+
   const handleDropDown = () => {
     setDropDownOpen(!isDropDownOpen);
   };
@@ -43,14 +41,16 @@ function MainSection() {
   // Depends Upon firebase Data;
   let bodyEl = null;
   let newInvoiceForm = null;
-  if (invoicesData) {
-  } else {
-    // bodyEl = <NoInvoice />;
+  if (invoices.length > 0) {
     bodyEl = <InvoiceList />;
+  } else {
+    bodyEl = <NoInvoice />;
   }
 
   if (isOpenNewInvoiceForm) {
-    newInvoiceForm = <InvoiceForm onClick={removeInvoceForm} />;
+    newInvoiceForm = (
+      <InvoiceForm onClick={removeInvoceForm} databaseData={databaseData} />
+    );
   }
   // console.log(newInvoiceForm);
   return (

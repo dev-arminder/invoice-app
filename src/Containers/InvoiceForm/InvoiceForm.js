@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import { IoIosArrowBack } from "react-icons/io";
+import { addInvoice } from "../../firebaseFunctions";
 import Button from "../../Components/UI/Button/Button";
 import BillFrom from "../../Components/BillFrom/BillFrom";
 import BillTo from "../../Components/BillTo/BillTo";
 import ItemList from "../../Components/ItemList/ItemList";
 import classes from "./InvoiceForm.module.css";
 
-function InvoiceForm({ onClick }) {
+function InvoiceForm({ onClick, databaseData }) {
   // Bill From state
   const [billFromStreetAddress, setBillFromStreetAddress] = useState("");
   const [billFromCity, setBillFromCity] = useState("");
@@ -31,6 +32,7 @@ function InvoiceForm({ onClick }) {
   const [billItemTotal, setBillItemTotal] = useState("");
 
   function handleSubmit(e) {
+    console.log(e);
     e.preventDefault();
     let invoice = {
       billFromStreetAddress,
@@ -48,8 +50,17 @@ function InvoiceForm({ onClick }) {
       billItemName,
       billItemQty,
       billItemPrice,
-      billItemTotal
+      billItemTotal,
+      userId: databaseData.id,
+      userEmail: databaseData.email
     };
+    if (e.target.classList.contains("btn--send")) {
+      invoice.status = "Pending";
+    } else {
+      invoice.status = "Draft";
+    }
+    addInvoice(databaseData.id, invoice);
+    onClick();
   }
   return (
     <section className={classes.InvoiceForm}>
@@ -62,7 +73,7 @@ function InvoiceForm({ onClick }) {
         </div>
         <div>
           <h3 className={classes.InvoiceForm__heading}>New Invoice</h3>
-          <form onSubmit={e => handleSubmit(e)}>
+          <form>
             <BillFrom
               handleStreetAddr={setBillFromStreetAddress}
               handleCity={setBillFromCity}
@@ -87,10 +98,16 @@ function InvoiceForm({ onClick }) {
             />
 
             <div className={classes.InvoiceForm__btns}>
-              <Button className="btn btn-addNew btn--invoiceForm btn--draft">
+              <Button
+                className="btn btn-addNew btn--invoiceForm btn--draft"
+                onClick={e => handleSubmit(e)}
+              >
                 Save as draft
               </Button>
-              <Button className="btn btn-addNew btn--invoiceForm btn--send">
+              <Button
+                className="btn btn-addNew btn--invoiceForm btn--send"
+                onClick={e => handleSubmit(e)}
+              >
                 Save
               </Button>
             </div>

@@ -1,34 +1,33 @@
-import { getDatabase, ref, set, onValue, get, child } from "firebase/database";
+import {
+  getDatabase,
+  ref,
+  set,
+  onValue,
+  get,
+  child,
+  push,
+  update
+} from "firebase/database";
 
 const db = getDatabase();
 
 // // Database functions
 
 // Read User data
-export function readUserData(id, updateState) {
+export function readUserData(id, updateState, updateInvoices) {
   const userRef = ref(db, "users/" + id);
   onValue(userRef, snapshot => {
     const data = snapshot.val();
-    updateState(snapshot.val());
+    updateState(data);
+    const invoices = [];
+
+    for (let key in data.invoices) {
+      invoices.push({ ...data.invoices[key], id: key });
+    }
+    updateInvoices(invoices);
+    console.log(data);
   });
 }
-
-// export function readUserData(id) {
-//   const dbRef = ref(getDatabase());
-//   let val;
-//   get(child(dbRef, `users/${id}`))
-//     .then(snapshot => {
-//       if (snapshot.exists()) {
-//         val = snapshot.val();
-//       } else {
-//         console.log("No data available");
-//       }
-//     })
-//     .catch(error => {
-//       console.error(error);
-//     });
-//   console.log(val);
-// }
 
 // Write user data to database
 export function writeUserData(id, email) {
@@ -37,3 +36,14 @@ export function writeUserData(id, email) {
     email: email
   });
 }
+
+// Add Invoice in User's section
+
+export function addInvoice(id, invoiceData) {
+  const db = getDatabase();
+  const postListRef = ref(db, `users/${id}/invoices`);
+  const newPostRef = push(postListRef);
+  set(newPostRef, invoiceData);
+}
+
+// export function

@@ -4,6 +4,7 @@ import Button from "../../Components/UI/Button/Button";
 import Alert from "../../Components/UI/Alert/Alert";
 import classes from "./Login.module.css";
 import Loader from "../../Components/UI/Loader/Loader";
+import { writeUserData } from "../../firebaseFunctions";
 
 import { useAuth } from "../../Context/AuthContext";
 
@@ -31,6 +32,8 @@ function SignUp() {
       setError("");
       setLoading(true);
       await login(userEmail, userPassword);
+      // Save user data to database
+      writeUserData(userEmail, userPassword);
       history.push("/home");
     } catch {
       setError("Please Create Your Account First ");

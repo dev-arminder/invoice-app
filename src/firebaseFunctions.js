@@ -43,12 +43,44 @@ export function addInvoice(id, invoiceData) {
   set(newPostRef, invoiceData);
 }
 
-export function getInvoices(userId, invoiceId) {
+// export function getInvoices(userId, invoiceId, updateState) {
+//   const userRef = ref(db, `users/${userId}/invoices/${invoiceId}`);
+//   onValue(userRef, snapshot => {
+//     const data = snapshot.val();
+//     updateState(data);
+//   });
+// }
+
+export function getInvoices(userId, invoiceId, updateState) {
   const userRef = ref(db, `users/${userId}/invoices/${invoiceId}`);
-  onValue(userRef, snapshot => {
-    const data = snapshot.val();
-    console.log(data);
-  });
+  const dbRef = ref(getDatabase());
+  get(child(dbRef, `users/${userId}/invoices/${invoiceId}`))
+    .then(snapshot => {
+      if (snapshot.exists()) {
+        updateState(snapshot.val());
+      } else {
+        alert("No data available");
+      }
+    })
+    .catch(error => {
+      console.error(error);
+    });
+  // const url =
+  //   process.env.REACT_APP_FIREBASE_DATABASE_URL +
+  //   "users/" +
+  //   userId +
+  //   "/invoices/" +
+  //   invoiceId;
+  //   fetch(url)
+  //   .then(data => {
+  //     return data.json();
+  //   })
+  //   .then(invoice => {
+  //     console.log(invoice);
+  //   })
+  //   .catch(err => {
+  //     console.log(err);
+  //   });
 }
 
 export function deleteInvoice(userId, invoiceId) {

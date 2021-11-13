@@ -10,6 +10,8 @@ import { useAuth } from "../../Context/AuthContext";
 import { getInvoices, deleteInvoice } from "../../firebaseFunctions";
 import { Link, useHistory } from "react-router-dom";
 
+import { getDatabase, ref, onValue } from "firebase/database";
+
 function Invoice() {
   const [showConfirm, setShowConfirm] = useState(false);
   const [showMarked, setShowMarked] = useState(false);
@@ -20,7 +22,7 @@ function Invoice() {
   const history = useHistory();
 
   useEffect(() => {
-    getInvoices(currentUser.multiFactor.user.uid, "-" + id);
+    getInvoices(currentUser.multiFactor.user.uid, "-" + id, setDbData);
   }, []);
 
   const handleDeleteClick = () => {
@@ -59,7 +61,15 @@ function Invoice() {
         <div className={classes.Invoice__nav}>
           <div>
             <p>Status</p>
-            <Status value="Pending" modifier="pending" />
+
+            <Status
+              value={dbData ? dbData.status : "Paid"}
+              modifier={
+                dbData
+                  ? dbData.status[0].toLowerCase() + dbData.status.slice(1)
+                  : "paid"
+              }
+            />
           </div>
           <div className={classes.Invoice__deskBtn}>
             <Button className="btn__invoice btn__invoice--edit">Edit</Button>
@@ -80,48 +90,55 @@ function Invoice() {
       </header>
       <main className="max-width">
         <div className={classes["Invoice__main-id"]}>
-          <h3 className={classes["Invoice__main-heading"]}>XM9141</h3>
-          <h4 className={classes["Invoice__main-sub"]}>Graphic Design</h4>
+          <h3 className={classes["Invoice__main-heading"]}>
+            {id.slice(0, 10)}
+          </h3>
+          <h4 className={classes["Invoice__main-sub"]}>
+            {dbData ? dbData.billItemName : "Graphic Design"}
+          </h4>
         </div>
         <div className={classes["Invoice__main-senderAddress"]}>
           <address>
             <ul>
-              <li>19 Unit Terrace</li>
-              <li>London</li>
-              <li>El 3EZ</li>
-              <li>United Kingdom</li>
+              <li>
+                {" "}
+                {dbData ? dbData.billFromStreetAddress : "19 Unit Terrace"}
+              </li>
+              <li>{dbData ? dbData.billFromCity : "London"}</li>
+              <li> {dbData ? dbData.billFromPC : "El 3EZ"}</li>
+              <li>{dbData ? dbData.billFromCountry : "United Kingdom"}</li>
             </ul>
           </address>
         </div>
         <div className={classes["Invoice__main-invoice-meta"]}>
           <div>
             <p>Invoice Date</p>
-            <p>21 Aug 2021</p>
+            <p>{dbData ? dbData.billDate : "21 Aug 2021"}</p>
           </div>
           <div>
             <p>Payment Due</p>
-            <p>20 Sep 2021</p>
+            <p>{dbData ? dbData.billDueDate : "20 Sep 2021"}</p>
           </div>
         </div>
 
         <div className={classes["Invoice__main-receiverAddress"]}>
           <h5>Bill To</h5>
-          <h4>Alex Grim</h4>
+          <h4>{dbData ? dbData.billToName : "Alex Grim"}</h4>
           <address>
             <ul>
-              <li>84 Chruch Way</li>
-              <li>Bradford</li>
-              <li>BDI 9PB</li>
-              <li>United Kingdom</li>
+              <li>{dbData ? dbData.billToAddr : "84 Chruch Way"}</li>
+              <li>{dbData ? dbData.billToCity : "Bradford"}</li>
+              <li>{dbData ? dbData.billToPC : "BDI 9PB"}</li>
+              <li>{dbData ? dbData.billToCountry : "United Kingdom"}</li>
             </ul>
           </address>
         </div>
 
         <div className={classes["Invoice__main-receiverEmail"]}>
           <h5>Sent To</h5>
-          <h4>alexgrim@gmail.com</h4>
+          <h4>{dbData ? dbData.billToEmail : "alexgrim@gmail.com"}</h4>
         </div>
-        <InvoiceFooter />
+        <InvoiceFooter dbData={dbData} />
       </main>
     </section>
   );

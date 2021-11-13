@@ -32,7 +32,8 @@ function InvoiceForm({ onClick, databaseData }) {
   const [billItemTotal, setBillItemTotal] = useState("");
 
   function handleSubmit(e) {
-    console.log(e);
+    const date = new Date();
+    const today = date.toString().splice(4);
     e.preventDefault();
     let invoice = {
       billFromStreetAddress,
@@ -46,6 +47,7 @@ function InvoiceForm({ onClick, databaseData }) {
       billToPC,
       billToCountry,
       billDueDate,
+      billDate: today,
       billToPD,
       billItemName,
       billItemQty,

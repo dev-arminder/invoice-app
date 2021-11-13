@@ -2,7 +2,7 @@ import React from "react";
 import classes from "./Confirm.module.css";
 import Button from "../Button/Button";
 
-function Confirm({ heading, bodyText, action, handleCancel, handleDelete }) {
+function Confirm({ heading, bodyText, action, handleCancel, handleMain }) {
   return (
     <div className={classes.Confirm} onClick={handleCancel}>
       <div className={classes.Confirm__inner}>
@@ -18,12 +18,15 @@ function Confirm({ heading, bodyText, action, handleCancel, handleDelete }) {
           {action === "delete" ? (
             <Button
               className="btn btn__invoice btn__invoice--delete"
-              onClick={handleDelete}
+              onClick={handleMain}
             >
               Delete
             </Button>
           ) : (
-            <Button className="btn btn__invoice btn__invoice--marked">
+            <Button
+              className="btn btn__invoice btn__invoice--marked"
+              onClick={handleMain}
+            >
               Marked
             </Button>
           )}

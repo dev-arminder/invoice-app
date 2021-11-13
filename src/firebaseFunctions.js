@@ -43,16 +43,8 @@ export function addInvoice(id, invoiceData) {
   set(newPostRef, invoiceData);
 }
 
-// export function getInvoices(userId, invoiceId, updateState) {
-//   const userRef = ref(db, `users/${userId}/invoices/${invoiceId}`);
-//   onValue(userRef, snapshot => {
-//     const data = snapshot.val();
-//     updateState(data);
-//   });
-// }
-
 export function getInvoices(userId, invoiceId, updateState) {
-  const userRef = ref(db, `users/${userId}/invoices/${invoiceId}`);
+  // const userRef = ref(db, `users/${userId}/invoices/${invoiceId}`);
   const dbRef = ref(getDatabase());
   get(child(dbRef, `users/${userId}/invoices/${invoiceId}`))
     .then(snapshot => {
@@ -65,25 +57,14 @@ export function getInvoices(userId, invoiceId, updateState) {
     .catch(error => {
       console.error(error);
     });
-  // const url =
-  //   process.env.REACT_APP_FIREBASE_DATABASE_URL +
-  //   "users/" +
-  //   userId +
-  //   "/invoices/" +
-  //   invoiceId;
-  //   fetch(url)
-  //   .then(data => {
-  //     return data.json();
-  //   })
-  //   .then(invoice => {
-  //     console.log(invoice);
-  //   })
-  //   .catch(err => {
-  //     console.log(err);
-  //   });
 }
 
 export function deleteInvoice(userId, invoiceId) {
   set(ref(db, `users/${userId}/invoices/${invoiceId}`), null);
 }
-// export function
+
+export function updateStatusInvoice(userId, invoiceId) {
+  const invoiceRef = ref(db, `users/${userId}/invoices/${invoiceId}`);
+  console.log("Updateitng");
+  return update(invoiceRef, { status: "Paid" });
+}

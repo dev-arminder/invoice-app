@@ -244,7 +244,8 @@ a {
   color: #ff7500;
 }
 .status--draft {
-  background: #0c0e1666;
+  background: #0c0e1696;
+  color: white;
 }
 /* BillFrom Style */
 .BillFrom__input {

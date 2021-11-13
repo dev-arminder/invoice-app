@@ -7,10 +7,12 @@ import Button from "../../Components/UI/Button/Button";
 import InvoiceFooter from "../../Components/InvoiceFooter/InvoiceFooter";
 import Confirm from "../../Components/UI/Confirm/Confirm";
 import { useAuth } from "../../Context/AuthContext";
-import { getInvoices, deleteInvoice } from "../../firebaseFunctions";
+import {
+  getInvoices,
+  deleteInvoice,
+  updateStatusInvoice
+} from "../../firebaseFunctions";
 import { Link, useHistory } from "react-router-dom";
-
-import { getDatabase, ref, onValue } from "firebase/database";
 
 function Invoice() {
   const [showConfirm, setShowConfirm] = useState(false);
@@ -30,9 +32,15 @@ function Invoice() {
     history.push("/home");
   };
 
-  const handleMarked = () => {
-    setShowMarked(true);
+  const handleStatusChanged = () => {
+    console.log("Hello");
+    updateStatusInvoice(currentUser.multiFactor.user.uid, "-" + id);
+    history.push("/home");
   };
+
+  // const handleMarked = () => {
+  //   setShowMarked(true);
+  // };
 
   return (
     <section className="primary-section invoice-wrapper">
@@ -42,7 +50,7 @@ function Invoice() {
           bodyText={`Are you sure you want to delete invoice #${id}? This action Can not be undone.`}
           action="delete"
           handleCancel={() => setShowConfirm(false)}
-          handleDelete={handleDeleteClick}
+          handleMain={handleDeleteClick}
         />
       ) : null}
       {showMarked ? (
@@ -51,6 +59,7 @@ function Invoice() {
           bodyText={`Are you sure you want to Mark invoice #${id} as Paid? This action Can not be undone.`}
           action="marked"
           handleCancel={() => setShowMarked(false)}
+          handleMain={handleStatusChanged}
         />
       ) : null}
       <header className=" max-width">

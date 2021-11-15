@@ -10,6 +10,7 @@ import { useAuth } from "../../Context/AuthContext";
 
 function MainSection() {
   const [isDropDownOpen, setDropDownOpen] = useState(false);
+  const [dropDownValue, setDropDownValue] = useState("All");
   const [isOpenNewInvoiceForm, setOpenNewInvoiceForm] = useState(false);
   const [databaseData, setDatabaseData] = useState(0);
   const [invoices, setInvoices] = useState([]);
@@ -44,9 +45,13 @@ function MainSection() {
   let newInvoiceForm = null;
   if (invoices.length > 0) {
     // bodyEl.map(el => <InvoiceList />);
-    invoices.forEach(invoice =>
-      bodyEl.push(<InvoiceList key={invoice.id} {...invoice} />)
-    );
+    invoices.forEach(invoice => {
+      if (dropDownValue === "All") {
+        bodyEl.push(<InvoiceList key={invoice.id} {...invoice} />);
+      } else if (dropDownValue === invoice.status) {
+        bodyEl.push(<InvoiceList key={invoice.id} {...invoice} />);
+      }
+    });
   } else {
     bodyEl = <NoInvoice />;
   }
@@ -66,7 +71,16 @@ function MainSection() {
         </div>
         <div className={classes.Home__menus}>
           <div className={classes.Home__filter} onClick={handleDropDown}>
-            <span>Filter By Status</span>
+            <span>
+              Filter By-
+              <span
+                style={{
+                  color: "var(--red)"
+                }}
+              >
+                {dropDownValue}{" "}
+              </span>
+            </span>
             <span>
               {isDropDownOpen ? <IoIosArrowUp /> : <IoIosArrowDown />}
             </span>
@@ -78,10 +92,10 @@ function MainSection() {
             }
           >
             <ul>
-              <li>Draft</li>
-              <li>Pending</li>
-              <li>Paid</li>
-              <li>All</li>
+              <li onClick={() => setDropDownValue("Draft")}>Draft</li>
+              <li onClick={() => setDropDownValue("Pending")}>Pending</li>
+              <li onClick={() => setDropDownValue("Paid")}>Paid</li>
+              <li onClick={() => setDropDownValue("All")}>All</li>
             </ul>
           </div>
           <Button className="btn-addNew" onClick={handleNewInvoice}>
@@ -89,7 +103,9 @@ function MainSection() {
           </Button>
         </div>
       </div>
-      <div className={classes.Home__body}>{bodyEl}</div>
+      <div className={classes.Home__body}>
+        {bodyEl.length > 0 ? bodyEl : <NoInvoice />}
+      </div>
 
       {newInvoiceForm}
     </section>

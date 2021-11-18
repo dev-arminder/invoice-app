@@ -31,36 +31,50 @@ function InvoiceForm({ onClick, databaseData }) {
   const [billItemPrice, setBillItemPrice] = useState("");
   const [billItemTotal, setBillItemTotal] = useState("");
 
-  const [err, setError] = useState("false");
+  const [err, setError] = useState(false);
 
   function handleSubmit(e) {
     e.preventDefault();
     let today = new Date().toISOString().slice(0, 10);
 
+    // if (
+    //   billFromStreetAddress === "" ||
+    //   billFromCity === "" ||
+    //   billFromPC === "" ||
+    //   billFromCountry === "" ||
+    //   billToName === "" ||
+    //   billToEmail === "" ||
+    //   billToAddr === "" ||
+    //   billToCity === "" ||
+    //   billToPC === "" ||
+    //   billToCountry === "" ||
+    //   billDueDate === "" ||
+    //   billToPD === "" ||
+    //   billItemName === "" ||
+    //   billItemQty === "" ||
+    //   billItemPrice === "" ||
+    //   billItemTotal === ""
+    // ) {
+    //   setError("true");
+    // }
     if (
-      billFromStreetAddress === "" ||
-      billFromCity === "" ||
-      billFromPC === "" ||
-      billFromCountry === "" ||
-      billToName === "" ||
-      billToEmail === "" ||
-      billToAddr === "" ||
-      billToCity === "" ||
-      billToPC === "" ||
-      billToCountry === "" ||
-      billDueDate === "" ||
-      billToPD === "" ||
-      billItemName === "" ||
-      billItemQty === "" ||
-      billItemPrice === "" ||
-      billItemTotal === ""
+      billFromStreetAddress !== "" &&
+      billFromCity !== "" &&
+      billFromPC !== "" &&
+      billFromCountry !== "" &&
+      billToName !== "" &&
+      billToEmail !== "" &&
+      billToAddr !== "" &&
+      billToCity !== "" &&
+      billToPC !== "" &&
+      billToCountry !== "" &&
+      billDueDate !== "" &&
+      billToPD !== "" &&
+      billItemName !== "" &&
+      billItemQty !== "" &&
+      billItemPrice !== "" &&
+      billItemTotal !== ""
     ) {
-      setError("true");
-    }
-
-    // setError("true");
-
-    if (err === "false") {
       let invoice = {
         billFromStreetAddress,
         billFromCity,
@@ -91,9 +105,45 @@ function InvoiceForm({ onClick, databaseData }) {
       addInvoice(databaseData.id, invoice);
       onClick();
     } else {
-      alert("FIll Out FOrm Properly");
-      setError("false");
+      setError(true);
     }
+
+    // setError("true");
+
+    // if (err === "false") {
+    //   let invoice = {
+    //     billFromStreetAddress,
+    //     billFromCity,
+    //     billFromPC,
+    //     billFromCountry,
+    //     billToName,
+    //     billToEmail,
+    //     billToAddr,
+    //     billToCity,
+    //     billToPC,
+    //     billToCountry,
+    //     billDueDate,
+    //     billDate: today,
+    //     billToPD,
+    //     billItemName,
+    //     billItemQty,
+    //     billItemPrice,
+    //     billItemTotal,
+    //     userId: databaseData.id,
+    //     userEmail: databaseData.email
+    //   };
+    //   if (e.target.classList.contains("btn--send")) {
+    //     invoice.status = "Pending";
+    //   } else {
+    //     invoice.status = "Draft";
+    //   }
+    //   console.log(databaseData);
+    //   addInvoice(databaseData.id, invoice);
+    //   onClick();
+    // } else {
+    //   alert("FIll Out FOrm Properly");
+    //   setError("false");
+    // }
   }
   return (
     <section className={classes.InvoiceForm}>
@@ -130,6 +180,14 @@ function InvoiceForm({ onClick, databaseData }) {
               handlePrice={setBillItemPrice}
               handleTotal={setBillItemTotal}
             />
+
+            {err ? (
+              <div className={classes.InvoiceForm__errMsg}>
+                All Fields Are Mandontary
+              </div>
+            ) : (
+              ""
+            )}
 
             <div className={classes.InvoiceForm__btns}>
               <Button

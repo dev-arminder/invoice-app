@@ -176,6 +176,15 @@ a {
 .btn--fullWidth {
   width: 95%;
 }
+.btn-logout {
+  position: absolute;
+  bottom: 1em;
+  right: 1em;
+  background: var(--red);
+  color: white;
+  padding: 1rem 1.4rem;
+  border-radius: 20px;
+}
 /* Invoice Wrapper */
 .invoice-wrapper {
   display: flex;

@@ -39,6 +39,12 @@
   margin-left: 10px;
 }
 
+.InvoiceForm__errMsg {
+  padding: 1em 0;
+  font-weight: bold;
+  color: var(--red);
+}
+
 /* 
 
 Experiment

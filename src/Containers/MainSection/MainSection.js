@@ -7,6 +7,8 @@ import InvoiceForm from "../InvoiceForm/InvoiceForm";
 import InvoiceList from "../../Components/InvoiceList/InvoiceList";
 import { writeUserData, readUserData } from "../../firebaseFunctions";
 import { useAuth } from "../../Context/AuthContext";
+import { useHistory } from "react-router-dom";
+import { async } from "@firebase/util";
 
 function MainSection() {
   const [isDropDownOpen, setDropDownOpen] = useState(false);
@@ -14,8 +16,9 @@ function MainSection() {
   const [isOpenNewInvoiceForm, setOpenNewInvoiceForm] = useState(false);
   const [databaseData, setDatabaseData] = useState(0);
   const [invoices, setInvoices] = useState([]);
-  const { currentUser } = useAuth();
+  const { currentUser, logout } = useAuth();
 
+  const history = useHistory();
   // check if any invoice is there for a particular user
   const userData = {
     userID: currentUser.multiFactor.user.uid,
@@ -36,6 +39,11 @@ function MainSection() {
 
   const removeInvoceForm = () => {
     setOpenNewInvoiceForm(false);
+  };
+
+  const handleLogout = async () => {
+    await logout();
+    history.push("/");
   };
 
   // Depends Upon firebase Data;
@@ -116,6 +124,9 @@ function MainSection() {
       </div>
 
       {newInvoiceForm}
+      <Button className="btn-logout" onClick={handleLogout}>
+        Logout
+      </Button>
     </section>
   );
 }

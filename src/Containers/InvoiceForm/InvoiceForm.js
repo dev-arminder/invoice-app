@@ -31,37 +31,69 @@ function InvoiceForm({ onClick, databaseData }) {
   const [billItemPrice, setBillItemPrice] = useState("");
   const [billItemTotal, setBillItemTotal] = useState("");
 
+  const [err, setError] = useState("false");
+
   function handleSubmit(e) {
-    let today = new Date().toISOString().slice(0, 10);
     e.preventDefault();
-    let invoice = {
-      billFromStreetAddress,
-      billFromCity,
-      billFromPC,
-      billFromCountry,
-      billToName,
-      billToEmail,
-      billToAddr,
-      billToCity,
-      billToPC,
-      billToCountry,
-      billDueDate,
-      billDate: today,
-      billToPD,
-      billItemName,
-      billItemQty,
-      billItemPrice,
-      billItemTotal,
-      userId: databaseData.id,
-      userEmail: databaseData.email
-    };
-    if (e.target.classList.contains("btn--send")) {
-      invoice.status = "Pending";
-    } else {
-      invoice.status = "Draft";
+    let today = new Date().toISOString().slice(0, 10);
+
+    if (
+      billFromStreetAddress === "" ||
+      billFromCity === "" ||
+      billFromPC === "" ||
+      billFromCountry === "" ||
+      billToName === "" ||
+      billToEmail === "" ||
+      billToAddr === "" ||
+      billToCity === "" ||
+      billToPC === "" ||
+      billToCountry === "" ||
+      billDueDate === "" ||
+      billToPD === "" ||
+      billItemName === "" ||
+      billItemQty === "" ||
+      billItemPrice === "" ||
+      billItemTotal === ""
+    ) {
+      setError("true");
     }
-    addInvoice(databaseData.id, invoice);
-    onClick();
+
+    // setError("true");
+
+    if (err === "false") {
+      let invoice = {
+        billFromStreetAddress,
+        billFromCity,
+        billFromPC,
+        billFromCountry,
+        billToName,
+        billToEmail,
+        billToAddr,
+        billToCity,
+        billToPC,
+        billToCountry,
+        billDueDate,
+        billDate: today,
+        billToPD,
+        billItemName,
+        billItemQty,
+        billItemPrice,
+        billItemTotal,
+        userId: databaseData.id,
+        userEmail: databaseData.email
+      };
+      if (e.target.classList.contains("btn--send")) {
+        invoice.status = "Pending";
+      } else {
+        invoice.status = "Draft";
+      }
+      console.log(databaseData);
+      addInvoice(databaseData.id, invoice);
+      onClick();
+    } else {
+      alert("FIll Out FOrm Properly");
+      setError("false");
+    }
   }
   return (
     <section className={classes.InvoiceForm}>
@@ -80,6 +112,7 @@ function InvoiceForm({ onClick, databaseData }) {
               handleCity={setBillFromCity}
               handlePC={setBillFromPC}
               handleCountry={setBillFromCountry}
+              billFromStreetAddress={billFromStreetAddress}
             />
             <BillTo
               handleName={setBillToName}
@@ -101,13 +134,13 @@ function InvoiceForm({ onClick, databaseData }) {
             <div className={classes.InvoiceForm__btns}>
               <Button
                 className="btn btn-addNew btn--invoiceForm btn--draft"
-                onClick={e => handleSubmit(e)}
+                onClick={handleSubmit}
               >
                 Save as draft
               </Button>
               <Button
                 className="btn btn-addNew btn--invoiceForm btn--send"
-                onClick={e => handleSubmit(e)}
+                onClick={handleSubmit}
               >
                 Save
               </Button>

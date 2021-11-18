@@ -3,7 +3,13 @@ import Label from "../UI/Label/Label";
 import Input from "../UI/Input/Input";
 import classes from "./BillFrom.module.css";
 
-function BillFrom({ handleStreetAddr, handleCity, handlePC, handleCountry }) {
+function BillFrom({
+  handleStreetAddr,
+  handleCity,
+  handlePC,
+  handleCountry,
+  billFromStreetAddress
+}) {
   return (
     <React.Fragment>
       <h4 className={classes["Invoice__sub-heading"]}>Bill From</h4>
@@ -16,6 +22,7 @@ function BillFrom({ handleStreetAddr, handleCity, handlePC, handleCountry }) {
           placeholder="e.g 19 React Road"
           onChange={e => handleStreetAddr(e.target.value)}
           required={true}
+          value={billFromStreetAddress}
         />
       </div>
       <div className={classes["Invoice__form-group"]}>

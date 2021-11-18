@@ -19,7 +19,7 @@ function SignUp() {
   const [error, setError] = useState();
   const [loading, setLoading] = useState(false);
 
-  const { login } = useAuth();
+  const { login, currentUser } = useAuth();
   const history = useHistory();
 
   const handleSubmit = async e => {
@@ -32,13 +32,17 @@ function SignUp() {
       setError("");
       setLoading(true);
       await login(userEmail, userPassword);
+      console.log(currentUser);
       // Save user data to database
-      writeUserData(userEmail, userPassword);
-      history.push("/home");
+      await writeUserData(
+        currentUser.multiFactor.user.uid,
+        currentUser.multiFactor.user.email
+      );
     } catch {
       setError("Please Create Your Account First ");
     }
     setLoading(false);
+    history.push("/home");
   };
 
   return (
@@ -54,27 +58,28 @@ function SignUp() {
         </Alert>
       ) : null}
       <div className={classes.login__form}>
-        <div className={classes.login__formfield}>
-          <label for="email" className={classes.login__label}>
-            Email
-          </label>
-          <Input
-            type="email"
-            id="email"
-            onChange={e => setUserEmail(e.target.value)}
-          />
-        </div>
-        <div className={classes.login__formfield}>
-          <label for="password" className={classes.login__label}>
-            Password
-          </label>
-          <Input
-            type="password"
-            id="passowrd"
-            onChange={e => setUserPassword(e.target.value)}
-          />
-        </div>
-
+        <form>
+          <div className={classes.login__formfield}>
+            <label for="email" className={classes.login__label}>
+              Email
+            </label>
+            <Input
+              type="email"
+              id="email"
+              onChange={e => setUserEmail(e.target.value)}
+            />
+          </div>
+          <div className={classes.login__formfield}>
+            <label for="password" className={classes.login__label}>
+              Password
+            </label>
+            <Input
+              type="password"
+              id="passowrd"
+              onChange={e => setUserPassword(e.target.value)}
+            />
+          </div>
+        </form>
         <div className={classes.login__formfield}>
           {loading ? (
             <Loader />

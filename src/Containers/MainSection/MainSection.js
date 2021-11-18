@@ -22,6 +22,7 @@ function MainSection() {
     email: currentUser.multiFactor.user.email
   };
   useEffect(() => {
+    console.log(userData);
     readUserData(userData.userID, setDatabaseData, setInvoices);
   }, []);
 
@@ -30,12 +31,10 @@ function MainSection() {
   };
 
   const handleNewInvoice = () => {
-    alert("open");
     setOpenNewInvoiceForm(true);
   };
 
   const removeInvoceForm = () => {
-    alert("closgin");
     setOpenNewInvoiceForm(false);
   };
 
@@ -57,8 +56,12 @@ function MainSection() {
   }
 
   if (isOpenNewInvoiceForm) {
+    console.log(userData);
     newInvoiceForm = (
-      <InvoiceForm onClick={removeInvoceForm} databaseData={databaseData} />
+      <InvoiceForm
+        onClick={removeInvoceForm}
+        databaseData={{ id: userData.userID, email: userData.email }}
+      />
     );
   }
   // console.log(newInvoiceForm);
@@ -67,7 +70,12 @@ function MainSection() {
       <div className={classes.Home__header + " max-width"}>
         <div className={classes.Home__heading}>
           <h3>Invoices</h3>
-          <span>No Invoices</span>
+          <span>
+            <span style={{ color: "var(--red)" }}>
+              {bodyEl.length > 0 ? bodyEl.length : "No"}
+            </span>{" "}
+            Invoices
+          </span>
         </div>
         <div className={classes.Home__menus}>
           <div className={classes.Home__filter} onClick={handleDropDown}>

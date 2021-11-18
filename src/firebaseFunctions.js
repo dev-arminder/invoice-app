@@ -19,9 +19,12 @@ export function readUserData(id, updateState, updateInvoices) {
     updateState(data);
     const invoices = [];
 
-    for (let key in data.invoices) {
-      invoices.push({ ...data.invoices[key], id: key });
+    if (data) {
+      for (let key in data.invoices) {
+        invoices.push({ ...data.invoices[key], id: key });
+      }
     }
+
     updateInvoices(invoices);
   });
 }
@@ -30,7 +33,8 @@ export function readUserData(id, updateState, updateInvoices) {
 export function writeUserData(id, email) {
   set(ref(db, "users/" + id), {
     id: id,
-    email: email
+    email: email,
+    invoices: {}
   });
 }
 

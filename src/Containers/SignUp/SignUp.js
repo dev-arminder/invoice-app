@@ -41,8 +41,10 @@ function SignUp() {
     try {
       setError("");
       setLoading(true);
+      // await signUp(userEmail, userPassword);
+
       await signUp(userEmail, userPassword);
-      history.push("/home");
+      history.push("/login");
     } catch {
       setError("Failed to Create An Account! ");
     }
@@ -83,6 +85,7 @@ function SignUp() {
             onChange={e => setUserEmail(e.target.value)}
           />
         </div>
+
         <div className={classes.signUP__formfield}>
           <label for="password" className={classes.signUp__label}>
             Password
@@ -116,11 +119,15 @@ function SignUp() {
             </Button>
           )}
         </div>
+
         <div className={classes.signUP__formfield}>
           <p>Already have an Account.</p>
           <Link to="/login">Login Here!</Link>
         </div>
       </div>
+      <span className={classes.signUp__info}>
+        *passowrd must be 6 characters long.
+      </span>
     </section>
   );
 }

@@ -81,7 +81,6 @@ function Invoice() {
             />
           </div>
           <div className={classes.Invoice__deskBtn}>
-            <Button className="btn__invoice btn__invoice--edit">Edit</Button>
             <Button
               className="btn__invoice btn__invoice--delete"
               onClick={() => setShowConfirm(true)}

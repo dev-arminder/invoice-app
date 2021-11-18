@@ -34,9 +34,11 @@ function Main({ isDarkMode, toggleMode }) {
           <Welcome />
         </Route>
 
-        <Route path="/invoice/:id">
-          <Invoice />
+        <Route exact path="/invoice">
+          <h2>NO Page</h2>
         </Route>
+
+        <PrivateRoute path="/invoice/:id" component={Invoice} />
       </Switch>
     </React.Fragment>
   );

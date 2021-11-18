@@ -7,6 +7,7 @@ import Welcome from "../../Components/Welcome/Welcome";
 import SignUp from "../SignUp/SignUp";
 import Login from "../Login/Login";
 import Invoice from "../Invoice/Invoice";
+import DefaultPage from "../../Components/404Page/404Page";
 // import { useAuth } from "../../Context/AuthContext";
 
 function Main({ isDarkMode, toggleMode }) {
@@ -34,11 +35,11 @@ function Main({ isDarkMode, toggleMode }) {
           <Welcome />
         </Route>
 
-        <Route exact path="/invoice">
-          <h2>NO Page</h2>
-        </Route>
-
         <PrivateRoute path="/invoice/:id" component={Invoice} />
+
+        <Route path="*">
+          <DefaultPage />
+        </Route>
       </Switch>
     </React.Fragment>
   );

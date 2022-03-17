@@ -101,7 +101,7 @@ function InvoiceForm({ onClick, databaseData }) {
       } else {
         invoice.status = "Draft";
       }
-      console.log(databaseData);
+
       addInvoice(databaseData.id, invoice);
       onClick();
     } else {
@@ -137,7 +137,7 @@ function InvoiceForm({ onClick, databaseData }) {
     //   } else {
     //     invoice.status = "Draft";
     //   }
-    //   console.log(databaseData);
+
     //   addInvoice(databaseData.id, invoice);
     //   onClick();
     // } else {

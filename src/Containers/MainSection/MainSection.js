@@ -25,7 +25,6 @@ function MainSection() {
     email: currentUser.multiFactor.user.email
   };
   useEffect(() => {
-    console.log(userData);
     readUserData(userData.userID, setDatabaseData, setInvoices);
   }, []);
 
@@ -64,7 +63,6 @@ function MainSection() {
   }
 
   if (isOpenNewInvoiceForm) {
-    console.log(userData);
     newInvoiceForm = (
       <InvoiceForm
         onClick={removeInvoceForm}
@@ -72,7 +70,7 @@ function MainSection() {
       />
     );
   }
-  // console.log(newInvoiceForm);
+
   return (
     <section className={classes.Home + " primary-section "}>
       <div className={classes.Home__header + " max-width"}>

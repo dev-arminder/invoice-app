@@ -32,7 +32,7 @@ function SignUp() {
       setError("");
       setLoading(true);
       await login(userEmail, userPassword);
-      console.log(currentUser);
+
       // Save user data to database
       await writeUserData(
         currentUser.multiFactor.user.uid,

@@ -69,6 +69,6 @@ export function deleteInvoice(userId, invoiceId) {
 
 export function updateStatusInvoice(userId, invoiceId) {
   const invoiceRef = ref(db, `users/${userId}/invoices/${invoiceId}`);
-  console.log("Updateitng");
+
   return update(invoiceRef, { status: "Paid" });
 }

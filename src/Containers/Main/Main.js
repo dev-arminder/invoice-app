@@ -11,8 +11,6 @@ import DefaultPage from "../../Components/404Page/404Page";
 // import { useAuth } from "../../Context/AuthContext";
 
 function Main({ isDarkMode, toggleMode }) {
-  // const { currentUser } = useAuth();
-  // console.log(currentUser);
   return (
     <React.Fragment>
       <Sidebar isDarkMode={isDarkMode} toggleMode={toggleMode} />

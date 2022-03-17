@@ -33,7 +33,6 @@ function Invoice() {
   };
 
   const handleStatusChanged = () => {
-    console.log("Hello");
     updateStatusInvoice(currentUser.multiFactor.user.uid, "-" + id);
     history.push("/home");
   };
